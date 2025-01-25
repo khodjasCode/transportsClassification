@@ -15,7 +15,7 @@ st.title('Transportni klassifikatsiya qiluvchi model!')
 file = st.file_uploader('Rasm yuklash', type= ['png', 'jpeg', 'gif', 'svg'])
 if file is not None:
     img = Image.open(file)
-    st.image(img, caption='Yuklagan rasmingiz:', use_column_width=True)
+    st.image(img, caption='Yuklagan rasmingiz:', use_container_width=True)
 
 #PIL image
 if file is not None:
