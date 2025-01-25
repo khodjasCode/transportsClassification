@@ -17,17 +17,16 @@ if file is not None:
     img = Image.open(file)
     st.image(img, caption='Yuklagan rasmingiz:', use_container_width=True)
 
-#PIL image
-if file is not None:
+    #PIL image
     img = PILImage.create(file)
+
+    #model
+    model = load_learner('transport_model.pkl')
+
+    #prediction
+    pred, pred_id, probs = model.predict(img)
+    st.success(f'It is {pred.lower()}!')
+    st.info(f'Probability: {probs[pred_id]*100:.1f}%')
+
 else:
     st.warning("Klassifikatsiya uchun avval rasm yuklang!")
-
-#model
-model = load_learner('transport_model.pkl')
-
-#prediction
-pred, pred_id, probs = model.predict(img)
-st.success(f'It is {pred.lower()}!')
-st.info(f'Probability: {probs[pred_id]*100:.1f}%')
-
